@@ -1,13 +1,13 @@
-chain_id = "cosmoshub-4"
+chain_id = "testnet"
 validators = 3
 accounts = 2
-binary = "simd"
-hrp_prefix = "cosmos"
-denom = "stake"
-coin_type = 118
+binary = "provenance/build/provenanced"
+hrp_prefix = "provenance"
+denom = "hash"
+coin_type = 505
 
 [config_node.app]
-minimum-gas-prices = "0.000001stake"
+minimum-gas-prices = "1905hash"
 api = { enable = true, swagger = true, enabled-unsafe-cors = true }
 rosetta = { enable = false }
 
