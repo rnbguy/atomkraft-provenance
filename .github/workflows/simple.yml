@@ -1,0 +1,29 @@
+name: Smoke test for Atomkraft
+
+on:
+  workflow_dispatch:
+
+jobs:
+  atomkraft-smoke-test:
+    name: Atomkraft
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    steps:
+      - name: Deps
+        run: |
+          pacman -Syu git python-pip leveldb go --noconfirm --needed
+
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Chain binary
+        run: |
+          (cd provenance; make build)
+
+      - run: |
+          python -m pip install -U atomkraft
+
+      - run: |
+          timeout 30s atomkraft chain testnet
