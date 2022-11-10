@@ -1,0 +1,3 @@
+[submodule "provenance"]
+	path = provenance
+	url = git@github.com:provenance-io/provenance
